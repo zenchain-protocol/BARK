@@ -3301,12 +3301,6 @@ impl_runtime_apis! {
 				key
 			)
 		}
-
-		fn trace_tx(
-			_tx: sp_core::H256
-		) -> Result<pallet_revive::evm::CallTrace, sp_runtime::DispatchError> {
-			todo!()
-		}
 	}
 
 	impl pallet_transaction_payment_rpc_runtime_api::TransactionPaymentApi<

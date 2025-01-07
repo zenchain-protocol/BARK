@@ -1566,10 +1566,5 @@ sp_api::decl_runtime_apis! {
 			address: H160,
 			key: [u8; 32],
 		) -> GetStorageResult;
-
-		/// Replay the transaction with the given hash, and return the trace.
-		fn trace_tx(
-			tx: H256
-		) -> Result<CallTrace, sp_runtime::DispatchError>;
 	}
 }
