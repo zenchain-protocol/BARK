@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736274445771,
+  "lastUpdate": 1736289323079,
   "repoUrl": "https://github.com/paritytech/polkadot-sdk",
   "entries": {
     "Benchmark": [
@@ -1007,6 +1007,78 @@ window.BENCHMARK_DATA = {
             "name": "request_response_benchmark/large_payload/libp2p/serially/128MB",
             "value": 1969552896,
             "range": "± 156706208",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "alistair.singh7@gmail.com",
+            "name": "Alistair Singh",
+            "username": "alistair-singh"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4059282fc7b6ec965cc22a9a0df5920a4f3a4101",
+          "message": "Snowbridge: Support bridging native ETH (#6855)\n\nChanges:\n1. Use the 0x0000000000000000000000000000000000000000 token address as\nNative ETH.\n2. Convert it to/from `{ parents: 2, interior:\nX1(GlobalConsensus(Ethereum{chain_id: 1})) }` when encountered.\n\nOnchain changes:\nThis will require a governance request to register native ETH (with the\nabove location) in the foreign assets pallet and make it sufficient.\n\nRelated solidity changes:\nhttps://github.com/Snowfork/snowbridge/pull/1354\n\nTODO:\n- [x] Emulated Tests\n\n---------\n\nCo-authored-by: Vincent Geddes <117534+vgeddes@users.noreply.github.com>\nCo-authored-by: Bastian Köcher <git@kchr.de>\nCo-authored-by: Bastian Köcher <info@kchr.de>",
+          "timestamp": "2025-01-07T21:23:45Z",
+          "tree_id": "3f15f3f4ba924ca1b7785e747d2d5ebca3574d75",
+          "url": "https://github.com/paritytech/polkadot-sdk/commit/4059282fc7b6ec965cc22a9a0df5920a4f3a4101"
+        },
+        "date": 1736289306372,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "request_response_benchmark/small_payload/libp2p/serially/64B",
+            "value": 17741432,
+            "range": "± 442892",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_benchmark/small_payload/libp2p/serially/512B",
+            "value": 18107378,
+            "range": "± 447782",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_benchmark/small_payload/libp2p/serially/4KB",
+            "value": 19190822,
+            "range": "± 383803",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_benchmark/small_payload/libp2p/serially/64KB",
+            "value": 23731634,
+            "range": "± 617825",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_benchmark/large_payload/libp2p/serially/256KB",
+            "value": 6106786,
+            "range": "± 382171",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_benchmark/large_payload/libp2p/serially/2MB",
+            "value": 34397002,
+            "range": "± 1471693",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_benchmark/large_payload/libp2p/serially/16MB",
+            "value": 257301185,
+            "range": "± 18021515",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_benchmark/large_payload/libp2p/serially/128MB",
+            "value": 2126395657,
+            "range": "± 172615662",
             "unit": "ns/iter"
           }
         ]
