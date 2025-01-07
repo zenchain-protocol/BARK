@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736273835403,
+  "lastUpdate": 1736288735716,
   "repoUrl": "https://github.com/paritytech/polkadot-sdk",
   "entries": {
     "statement-distribution-regression-bench": [
@@ -27759,6 +27759,50 @@ window.BENCHMARK_DATA = {
           {
             "name": "test-environment",
             "value": 0.04468712105999997,
+            "unit": "seconds"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "alistair.singh7@gmail.com",
+            "name": "Alistair Singh",
+            "username": "alistair-singh"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4059282fc7b6ec965cc22a9a0df5920a4f3a4101",
+          "message": "Snowbridge: Support bridging native ETH (#6855)\n\nChanges:\n1. Use the 0x0000000000000000000000000000000000000000 token address as\nNative ETH.\n2. Convert it to/from `{ parents: 2, interior:\nX1(GlobalConsensus(Ethereum{chain_id: 1})) }` when encountered.\n\nOnchain changes:\nThis will require a governance request to register native ETH (with the\nabove location) in the foreign assets pallet and make it sufficient.\n\nRelated solidity changes:\nhttps://github.com/Snowfork/snowbridge/pull/1354\n\nTODO:\n- [x] Emulated Tests\n\n---------\n\nCo-authored-by: Vincent Geddes <117534+vgeddes@users.noreply.github.com>\nCo-authored-by: Bastian Köcher <git@kchr.de>\nCo-authored-by: Bastian Köcher <info@kchr.de>",
+          "timestamp": "2025-01-07T21:23:45Z",
+          "tree_id": "3f15f3f4ba924ca1b7785e747d2d5ebca3574d75",
+          "url": "https://github.com/paritytech/polkadot-sdk/commit/4059282fc7b6ec965cc22a9a0df5920a4f3a4101"
+        },
+        "date": 1736288718875,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Sent to peers",
+            "value": 127.93199999999996,
+            "unit": "KiB"
+          },
+          {
+            "name": "Received from peers",
+            "value": 106.39999999999996,
+            "unit": "KiB"
+          },
+          {
+            "name": "test-environment",
+            "value": 0.04501998915399992,
+            "unit": "seconds"
+          },
+          {
+            "name": "statement-distribution",
+            "value": 0.035603249265999996,
             "unit": "seconds"
           }
         ]
