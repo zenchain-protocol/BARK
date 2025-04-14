@@ -366,6 +366,7 @@ impl<T: Config> Pallet<T> {
 		// out, so we do not need to count their payout op.
 		let mut nominator_payout_count: u32 = 0;
 
+		log!(debug, "nominators: {:?}", exposure.others());
 		// Lets now calculate how this is split to the nominators.
 		// Reward only the clipped exposures. Note this is not necessarily sorted.
 		for nominator in exposure.others().iter() {
@@ -400,6 +401,7 @@ impl<T: Config> Pallet<T> {
 						);
 					}
 				}
+
 				total_imbalance.subsume(imbalance);
 			}
 		}
