@@ -386,6 +386,7 @@ impl<T: Config> Pallet<T> {
 					page,
 				};
 				Self::deposit_event(e);
+
 				log!(debug, "dest: {:?}, is_virtual_staker: {:?}", dest.clone(), Self::is_virtual_staker(&nominator.who));
 				if let RewardDestination::Account(dest_account) = dest {
 					if Self::is_virtual_staker(&nominator.who) {
