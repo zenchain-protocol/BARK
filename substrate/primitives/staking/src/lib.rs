@@ -165,6 +165,7 @@ pub trait OnStakingUpdate<AccountId, Balance> {
 /// be retrieved by using `StakingInterface`.
 #[impl_trait_for_tuples::impl_for_tuples(10)]
 pub trait OnVirtualStakingUpdate<AccountId, Balance> {
+	/// Fired when a virtual nominator receives a staking rewards payout.
 	fn on_virtual_nominator_payout(
 		_stash: &AccountId,
 		_dest: &AccountId,

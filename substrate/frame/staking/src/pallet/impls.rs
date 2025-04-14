@@ -386,6 +386,7 @@ impl<T: Config> Pallet<T> {
 					page,
 				};
 				Self::deposit_event(e);
+				log!(debug, "dest: {:?}, is_virtual_staker: {:?}", dest.clone(), Self::is_virtual_staker(&nominator.who));
 				if let RewardDestination::Account(dest_account) = dest {
 					if Self::is_virtual_staker(&nominator.who) {
 						T::VirtualEventListeners::on_virtual_nominator_payout(
@@ -395,7 +396,7 @@ impl<T: Config> Pallet<T> {
 							&validator_stash,
 							era,
 							page,
-						)
+						);
 					}
 				}
 				total_imbalance.subsume(imbalance);
