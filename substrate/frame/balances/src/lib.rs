@@ -234,6 +234,7 @@ pub mod pallet {
 			type MaxFreezes = VariantCountOf<Self::RuntimeFreezeReason>;
 
 			type WeightInfo = ();
+			type MaxTotalIssuance = ConstU64<{ u64::MAX }>;
 		}
 	}
 
@@ -312,6 +313,10 @@ pub mod pallet {
 		/// The maximum number of individual freeze locks that can exist on an account at any time.
 		#[pallet::constant]
 		type MaxFreezes: Get<u32>;
+
+		/// The maximum total issuance of the currency.
+		#[pallet::constant]
+		type MaxTotalIssuance: Get<Self::Balance>;
 	}
 
 	/// The in-code storage version.
