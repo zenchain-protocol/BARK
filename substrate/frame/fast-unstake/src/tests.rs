@@ -294,6 +294,11 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
+					Event::Registered { stash: 3 },
+					Event::Registered { stash: 5 },
+					Event::Registered { stash: 7 },
+					Event::Registered { stash: 9 },
 					Event::BatchChecked { eras: vec![3, 2, 1, 0] },
 					Event::Unstaked { stash: 1, result: Ok(()) },
 					Event::BatchFinished { size: 1 },
@@ -343,6 +348,8 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
+					Event::Registered { stash: 3 },
 					Event::BatchChecked { eras: vec![3, 2, 1, 0] },
 					Event::Unstaked { stash: 1, result: Ok(()) },
 					Event::BatchFinished { size: 1 },
@@ -389,6 +396,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
 					Event::BatchChecked { eras: vec![3, 2, 1, 0] },
 					Event::Unstaked { stash: 1, result: Ok(()) },
 					Event::BatchFinished { size: 1 }
@@ -431,6 +439,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
 					Event::BatchChecked { eras: vec![3, 2, 1, 0] },
 					Event::Unstaked { stash: 1, result: Ok(()) },
 					Event::BatchFinished { size: 1 }
@@ -503,6 +512,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
 					Event::BatchChecked { eras: vec![3] },
 					Event::BatchChecked { eras: vec![2] },
 					Event::BatchChecked { eras: vec![1] },
@@ -586,6 +596,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
 					Event::BatchChecked { eras: vec![3] },
 					Event::BatchChecked { eras: vec![2] },
 					Event::BatchChecked { eras: vec![1] },
@@ -682,6 +693,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
 					Event::BatchChecked { eras: vec![3] },
 					Event::BatchChecked { eras: vec![2] },
 					Event::BatchChecked { eras: vec![4] },
@@ -729,6 +741,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: exposed },
 					Event::BatchChecked { eras: vec![3] },
 					Event::BatchChecked { eras: vec![2] },
 					Event::Slashed { stash: exposed, amount: Deposit::get() },
@@ -766,6 +779,7 @@ mod on_idle {
 				fast_unstake_events_since_last_call(),
 				// we slash them
 				vec![
+					Event::Registered { stash: exposed },
 					Event::BatchChecked { eras: vec![3, 2] },
 					Event::Slashed { stash: exposed, amount: Deposit::get() },
 					Event::BatchFinished { size: 0 }
@@ -802,6 +816,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 100 },
 					Event::Slashed { stash: 100, amount: Deposit::get() },
 					Event::BatchFinished { size: 0 }
 				]
@@ -838,6 +853,7 @@ mod on_idle {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 42 },
 					Event::BatchChecked { eras: vec![3, 2, 1, 0] },
 					Event::Unstaked { stash: 42, result: Ok(()) },
 					Event::BatchFinished { size: 1 }
@@ -891,6 +907,10 @@ mod batched {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
+					Event::Registered { stash: 3 },
+					Event::Registered { stash: 5 },
+					Event::Registered { stash: 7 },
 					Event::BatchChecked { eras: vec![3, 2, 1, 0] },
 					Event::Unstaked { stash: 1, result: Ok(()) },
 					Event::Unstaked { stash: 5, result: Ok(()) },
@@ -956,6 +976,10 @@ mod batched {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
+					Event::Registered { stash: 3 },
+					Event::Registered { stash: 5 },
+					Event::Registered { stash: 7 },
 					Event::BatchChecked { eras: vec![3, 2] },
 					Event::BatchChecked { eras: vec![1, 0] },
 					Event::Unstaked { stash: 1, result: Ok(()) },
@@ -1020,6 +1044,10 @@ mod batched {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 1 },
+					Event::Registered { stash: 3 },
+					Event::Registered { stash: 666 },
+					Event::Registered { stash: 667 },
 					Event::Slashed { stash: 667, amount: 7 },
 					Event::BatchChecked { eras: vec![3, 2] },
 					Event::Slashed { stash: 666, amount: 7 },
@@ -1082,11 +1110,15 @@ mod batched {
 			assert_eq!(
 				fast_unstake_events_since_last_call(),
 				vec![
+					Event::Registered { stash: 666 },
+					Event::Registered { stash: 667 },
 					Event::Slashed { stash: 666, amount: Deposit::get() },
 					Event::BatchChecked { eras: vec![3] },
+					Event::Registered { stash: 1 },
+					Event::Registered { stash: 3 },
 					Event::Slashed { stash: 667, amount: Deposit::get() },
 					Event::BatchFinished { size: 0 },
-					Event::BatchChecked { eras: vec![3] }
+					Event::BatchChecked { eras: vec![3] },
 				]
 			);
 		});
