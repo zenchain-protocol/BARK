@@ -350,7 +350,7 @@ pub mod pallet {
 
 	impl<T: Config> Pallet<T> {
 		/// Ensure that the caller is the sudo key.
-		pub(crate) fn ensure_sudo(origin: OriginFor<T>) -> DispatchResult {
+		pub fn ensure_sudo(origin: OriginFor<T>) -> DispatchResult {
 			let sender = ensure_signed_or_root(origin)?;
 
 			if let Some(sender) = sender {
