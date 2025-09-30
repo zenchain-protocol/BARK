@@ -83,8 +83,17 @@ pub mod v15 {
 
 			DisabledValidators::<T>::set(migrated);
 
-			log!(info, "v15 applied successfully.");
-			T::DbWeight::get().reads_writes(1, 1)
+			let in_code = Pallet::<T>::in_code_storage_version();
+			let on_chain = Pallet::<T>::on_chain_storage_version();
+
+			if in_code == 15 && on_chain == 14 {
+				in_code.put::<Pallet<T>>();
+				log!(info, "v15 applied successfully.");
+				T::DbWeight::get().reads_writes(2, 2)
+			} else {
+				log!(warn, "v15 not applied.");
+				T::DbWeight::get().reads_writes(2, 1)
+			}
 		}
 
 		#[cfg(feature = "try-runtime")]
@@ -92,6 +101,10 @@ pub mod v15 {
 			frame_support::ensure!(
 				v14::OffendingValidators::<T>::decode_len().is_none(),
 				"OffendingValidators is not empty after the migration"
+			);
+			frame_support::ensure!(
+				Pallet::<T>::on_chain_storage_version() >= 15,
+				"v15 not applied"
 			);
 			Ok(())
 		}
